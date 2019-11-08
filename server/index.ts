@@ -1,9 +1,9 @@
 import app from "./src/app";
 import logger from "./src/logger";
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
-const server = app.listen();
+const server = app.listen(PORT);
 logger.info(`App starting in ${PORT}`);
 
 const terminator = (code = 0) => async () => {
