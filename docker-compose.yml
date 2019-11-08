@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  server:
+    build: ./server/
+    image: server:latest
+
+  client:
+    build: ./client/
+    image: client:latest
+    depends_on:
+      - server
+    volumes:
+      - ./client/src:/usr/app/src
+      - ./client/public:/usr/app/public
