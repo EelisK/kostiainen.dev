@@ -34,4 +34,4 @@ const config = {
   plugins: [htmlPlugin, manifestPlugin]
 };
 
-export default config;
+module.exports = config;
