@@ -1,7 +1,7 @@
 FROM node:12
 
-RUN mkdir -p /usr/app
-WORKDIR /usr/app
+RUN mkdir -p /usr/client
+WORKDIR /usr/client
 
 COPY package.json yarn.lock ./
 
