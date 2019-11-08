@@ -1,0 +1,31 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "kostiainen.dev client",
+  "main": "index.js",
+  "author": "Eelis Kostiainen",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn start:dev",
+    "start:dev": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --mode production --config webpack.prod.js"
+  },
+  "dependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "awesome-typescript-loader": "^5.2.1",
+    "copy-webpack-plugin": "^5.0.5",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "proxy": "http://localhost:8080"
+}

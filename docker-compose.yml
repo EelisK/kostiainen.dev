@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+  server:
+    build: ./server/
+    image: server:latest
+    depends_on:
+      - client
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - clientbuild:/usr/client/dist
+    environment:
+      - STATICFILE_DIRECTORY=/usr/client/dist
+      - PORT=${SERVER_PORT}
+
+  client:
+    build: ./client/
+    image: client:latest
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
+    command: yarn build
+    volumes:
+      - clientbuild:/usr/client/dist
+
+volumes:
+  clientbuild:
