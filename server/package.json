@@ -6,12 +6,21 @@
   "author": "Eelis Kostiainen",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node ./index.ts"
+    "start": "yarn start:prod",
+    "start:dev": "nodemon index.ts",
+    "start:prod": "ts-node index.ts"
   },
   "dependencies": {
     "@types/koa": "^2.0.51",
+    "@types/koa-logger": "^3.1.1",
+    "@types/winston": "^2.4.4",
     "koa": "^2.11.0",
+    "koa-logger": "^3.2.1",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }
