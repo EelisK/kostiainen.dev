@@ -6,9 +6,9 @@
   "author": "Eelis Kostiainen",
   "license": "MIT",
   "scripts": {
-    "start": "yarn start:prod",
-    "start:prod": "webpack --mode production --config webpack.prod.js",
-    "start:dev": "webpack-dev-server --open --config webpack.dev.js"
+    "start": "yarn start:dev",
+    "start:dev": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --mode production --config webpack.prod.js"
   },
   "dependencies": {
     "react": "^16.11.0",
@@ -26,5 +26,6 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
