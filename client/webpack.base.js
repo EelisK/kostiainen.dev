@@ -1,5 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ManifestPlugin = require("webpack-manifest-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const config = {
   entry: "./src/index.tsx",
@@ -17,12 +17,8 @@ const config = {
     ]
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./public/index.html"
-    }),
-    new ManifestPlugin({
-      publicPath: "/"
-    })
+    new HtmlWebPackPlugin({ template: "./public/index.html" }),
+    new CopyPlugin([{ from: "public", to: "./" }])
   ]
 };
 
