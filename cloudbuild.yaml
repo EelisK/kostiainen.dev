@@ -2,5 +2,22 @@ steps:
   - name: "docker/compose:1.19.0"
     args: ["up", "-d"]
   - name: "gcr.io/cloud-builders/docker"
-    args: ["tag", "server:latest", "gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
-images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
+    args: ["tag", "server:latest", "gcr.io/$PROJECT_ID/kostiainendev-server"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/kostiainendev-server"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "kostiainendev-server",
+        "--image",
+        "gcr.io/$PROJECT_ID/kostiainendev-server",
+        "--region",
+        "europe-north1",
+        "--platform",
+        "managed",
+        "--quiet",
+      ]
+images: ["gcr.io/$PROJECT_ID/kostiainendev-server"]
