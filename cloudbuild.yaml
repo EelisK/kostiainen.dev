@@ -20,4 +20,7 @@ steps:
         "managed",
         "--quiet",
       ]
+    env:
+      - "HOST=server"
+      - "PORT=8080"
 images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
