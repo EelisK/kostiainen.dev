@@ -16,8 +16,6 @@ services:
   client:
     build: ./client/
     image: client:latest
-    ports:
-      - ${CLIENT_PORT}:${CLIENT_PORT}
     command: yarn build
     volumes:
       - clientbuild:/usr/client/dist
