@@ -3,4 +3,21 @@ steps:
     args: ["up", "-d"]
   - name: "gcr.io/cloud-builders/docker"
     args: ["tag", "server:latest", "gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "$PROJECT_ID",
+        "--image",
+        "gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA",
+        "--region",
+        "europe-north1",
+        "--platform",
+        "managed",
+        "--quiet",
+      ]
 images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
