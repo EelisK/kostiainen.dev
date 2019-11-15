@@ -3,10 +3,11 @@ services:
   server:
     build: ./server/
     image: server:latest
+    hostname: ${HOSTNAME}
     depends_on:
       - client
     ports:
-      - ${SERVER_PORT}:${SERVER_PORT}
+      - ${IP_ADDRESS}:${SERVER_PORT}:${SERVER_PORT}
     volumes:
       - clientbuild:/usr/client/dist
     environment:
