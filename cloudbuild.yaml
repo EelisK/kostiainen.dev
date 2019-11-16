@@ -1,6 +1,6 @@
 steps:
-  - name: "docker/compose:1.19.0"
-    args: ["up", "-d"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "server", "."]
   - name: "gcr.io/cloud-builders/docker"
     args: ["tag", "server:latest", "gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
   - name: "gcr.io/cloud-builders/docker"
@@ -21,6 +21,5 @@ steps:
         "--quiet",
       ]
     env:
-      - "HOST=server"
       - "PORT=8080"
 images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
