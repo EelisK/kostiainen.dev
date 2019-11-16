@@ -1,6 +1,9 @@
+import * as dotenv from "dotenv";
 import * as koa from "koa";
 import * as loggerMiddleware from "koa-logger";
 import * as serve from "koa-static";
+
+dotenv.config();
 
 const app = new koa();
 app.use(loggerMiddleware());
