@@ -1,5 +1,12 @@
 import * as React from "react";
+import Contact from "./Contact";
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core";
 
-export default class extends React.PureComponent {
-  render = () => <h1>Hello world!</h1>;
-}
+const theme = createMuiTheme();
+
+export default () => (
+  <ThemeProvider theme={theme}>
+    <Contact />
+  </ThemeProvider>
+);
