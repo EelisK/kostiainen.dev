@@ -5,6 +5,7 @@ import * as bodyParser from "koa-bodyparser";
 import * as serve from "koa-static";
 
 import error from "./middlewares/error";
+import emailRoutes from "./routes/email";
 
 dotenv.config();
 
@@ -13,5 +14,6 @@ app.use(bodyParser());
 app.use(loggerMiddleware());
 app.use(error);
 app.use(serve(process.env.STATICFILE_DIRECTORY));
+app.use(emailRoutes);
 
 export default app;
