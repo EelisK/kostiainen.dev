@@ -8,7 +8,8 @@
   "scripts": {
     "start": "yarn start:prod",
     "start:dev": "nodemon index.ts",
-    "start:prod": "ts-node index.ts"
+    "start:prod": "ts-node index.ts",
+    "test": "yarn jest test"
   },
   "dependencies": {
     "@types/dotenv": "^8.2.0",
@@ -32,6 +33,11 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "@types/jest": "^24.0.23",
+    "@types/supertest": "^2.0.8",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.2.0"
   }
 }
