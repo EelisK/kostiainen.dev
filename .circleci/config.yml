@@ -1,0 +1,58 @@
+version: 2
+jobs:
+  build-server:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/server
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: |
+          cd server
+          yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: test-server
+          command: |
+            cd server
+            yarn test
+          when: always
+
+  build-client:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/client
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: |
+          cd server
+          yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: test-client
+          command: |
+            cd client
+            yarn test
+          when: always
+
+workflows:
+  version: 2
+  build-test:
+    jobs:
+      - build-server
+      - build-client
