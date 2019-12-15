@@ -30,7 +30,7 @@ const WelcomePageContainer: React.FunctionComponent<{}> = props => {
   const classes = useStyles(props);
   const [visible, setVisible] = React.useState(true);
   const close = () => setVisible(false);
-  const autoClose = 1; //setTimeout(close, 7000);
+  const autoClose = setTimeout(close, 7000);
   React.useEffect(() => {
     visible || clearTimeout(autoClose);
   }, [visible]);
