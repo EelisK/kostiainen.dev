@@ -1,7 +1,1 @@
-import { Contact } from ".";
-
-interface State {
-  contact: Contact;
-}
-
-export default State;
+export default interface State {}
