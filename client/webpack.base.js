@@ -12,7 +12,31 @@ const config = {
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
         exclude: /node_modules/,
-        use: ["file-loader?name=[name].[ext]"]
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "images/"
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/"
+            }
+          }
+        ]
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"]
       }
     ]
   },
