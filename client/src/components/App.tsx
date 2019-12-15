@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ThemeProvider, withStyles } from "@material-ui/styles";
-import { createMuiTheme, CssBaseline } from "@material-ui/core";
-import SideBar from "./SideBar";
+import { createMuiTheme, CssBaseline, Typography } from "@material-ui/core";
+import { WelcomePage } from "./WelcomePage";
 
 const theme = createMuiTheme({
   typography: {
@@ -9,25 +9,26 @@ const theme = createMuiTheme({
   },
   palette: {
     background: {
-      default: "#400df8"
+      default: "#FFFFFF"
     },
     primary: {
-      main: "#400df8",
-      contrastText: "#FFFFFF"
+      main: "#FFFFFF",
+      contrastText: "#400df8"
     },
     text: {
-      primary: "#FFFFFF"
+      primary: "#400df8"
     }
   }
 });
 
 export default withStyles({
   logo: {}
-})((props: any) => {
+})(() => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SideBar />
+      <WelcomePage />
+      <Typography variant="h1">TODO</Typography>
     </ThemeProvider>
   );
 });
