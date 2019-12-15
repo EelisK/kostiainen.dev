@@ -1,12 +1,33 @@
 import * as React from "react";
-import Contact from "./Contact";
-import { ThemeProvider } from "@material-ui/styles";
-import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider, withStyles } from "@material-ui/styles";
+import { createMuiTheme, CssBaseline } from "@material-ui/core";
+import SideBar from "./SideBar";
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: '"Overpass Mono", monospace'
+  },
+  palette: {
+    background: {
+      default: "#400df8"
+    },
+    primary: {
+      main: "#400df8",
+      contrastText: "#FFFFFF"
+    },
+    text: {
+      primary: "#FFFFFF"
+    }
+  }
+});
 
-export default () => (
-  <ThemeProvider theme={theme}>
-    <Contact />
-  </ThemeProvider>
-);
+export default withStyles({
+  logo: {}
+})((props: any) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <SideBar />
+    </ThemeProvider>
+  );
+});
