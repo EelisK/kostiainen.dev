@@ -5,7 +5,7 @@ import { WelcomePage } from "./WelcomePage";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: '"Overpass Mono", monospace'
+    fontFamily: '"Overpass Mono Regular", monospace'
   },
   palette: {
     background: {
