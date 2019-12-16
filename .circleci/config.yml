@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-server:
+  test-server:
     docker:
       - image: circleci/node:12
     working_directory: ~/server
@@ -36,6 +36,31 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
       - run: |
+          cd client
+          yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: test-client-build
+          command: |
+            cd client
+            yarn build
+          when: always
+
+  test-client:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/client
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: |
           cd server
           yarn install
 
@@ -52,7 +77,8 @@ jobs:
 
 workflows:
   version: 2
-  build-test:
+  test-all:
     jobs:
-      - build-server
       - build-client
+      - test-server
+      - test-client
