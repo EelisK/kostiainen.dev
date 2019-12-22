@@ -34,7 +34,9 @@ const renderTypistChildren = (animations: Props["animations"], key: number) =>
   );
 
 const Text: React.FunctionComponent<Props> = props => (
-  <Typist>{renderTypistChildren(props.animations, 0)}</Typist>
+  <Typist cursor={{ show: false }}>
+    {renderTypistChildren(props.animations, 0)}
+  </Typist>
 );
 
 export default Text;
