@@ -1,7 +1,8 @@
 import * as React from "react";
-import { ThemeProvider, withStyles } from "@material-ui/styles";
-import { createMuiTheme, CssBaseline, Typography } from "@material-ui/core";
-import { WelcomePage } from "./WelcomePage";
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme, CssBaseline } from "@material-ui/core";
+import WelcomePage from "./WelcomePage";
+import MainPage from "./MainPage";
 
 const theme = createMuiTheme({
   typography: {
@@ -21,14 +22,10 @@ const theme = createMuiTheme({
   }
 });
 
-export default withStyles({
-  logo: {}
-})(() => {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <WelcomePage />
-      <Typography variant="h1">TODO</Typography>
-    </ThemeProvider>
-  );
-});
+export default () => (
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <WelcomePage />
+    <MainPage />
+  </ThemeProvider>
+);
