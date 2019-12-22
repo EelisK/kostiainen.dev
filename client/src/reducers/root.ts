@@ -1,6 +1,4 @@
-import { Reducer, AnyAction } from "redux";
-import State from "../types/State";
+import { combineReducers } from "redux";
+import page from "../reducers/page";
 
-const root: Reducer<State, AnyAction> = (state, action) => state;
-
-export default root;
+export default combineReducers({ page });

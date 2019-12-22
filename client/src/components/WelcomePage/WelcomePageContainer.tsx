@@ -2,6 +2,10 @@ import * as React from "react";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import { Collapse, Theme, Container, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import { connect } from "react-redux";
+import State from "../../types/State";
+import { PageState } from "../../types";
+import { setPage } from "../../actions/page";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -26,20 +30,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-const WelcomePageContainer: React.FunctionComponent<{}> = props => {
+export interface Props {
+  close: () => void;
+  isVisible: boolean;
+}
+
+export const WelcomePageContainer: React.FC<Props> = props => {
   const classes = useStyles(props);
-  const [visible, setVisible] = React.useState(true);
-  const close = () => setVisible(false);
-  const autoClose = setTimeout(close, 7000);
-  React.useEffect(() => {
-    visible || clearTimeout(autoClose);
-  }, [visible]);
   return (
-    <Collapse in={visible} unmountOnExit className={classes.root}>
+    <Collapse in={props.isVisible} unmountOnExit className={classes.root}>
       <Container className={classes.root}>
         <Container className={classes.fullSize}>{props.children}</Container>
         <Container maxWidth={false} className={classes.close}>
-          <IconButton onClick={close} color="primary">
+          <IconButton onClick={props.close} color="primary">
             <ExpandLessIcon />
           </IconButton>
         </Container>
@@ -48,4 +51,10 @@ const WelcomePageContainer: React.FunctionComponent<{}> = props => {
   );
 };
 
-export default WelcomePageContainer;
+const mapStateToProps = (state: State) => ({
+  isVisible: state.page === PageState.Welcome
+});
+
+export default connect(mapStateToProps, {
+  close: () => setPage(PageState.Main)
+})(WelcomePageContainer);
