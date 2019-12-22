@@ -20,7 +20,8 @@ export default class extends React.Component<Props> {
       this.id,
       this.props.animationOptions || {
         duration: 200,
-        type: "delayed"
+        type: "delayed",
+        onReady: vivus => vivus.play()
       }
     );
   }
