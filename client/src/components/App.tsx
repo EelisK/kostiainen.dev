@@ -14,10 +14,10 @@ const theme = createMuiTheme({
     },
     primary: {
       main: "#FFFFFF",
-      contrastText: "#400df8"
+      contrastText: "linear-gradient(45deg, #400df8, #4c32e5)"
     },
     text: {
-      primary: "#400df8"
+      primary: "linear-gradient(45deg, #400df8, #4c32e5)"
     }
   }
 });

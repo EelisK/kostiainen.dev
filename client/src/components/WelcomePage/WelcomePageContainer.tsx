@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "column",
+    flexDirection: "column"
+  },
+  inverseColors: {
     background: theme.palette.text.primary,
     color: theme.palette.primary.main
   },
@@ -38,7 +40,11 @@ export interface Props {
 export const WelcomePageContainer: React.FC<Props> = props => {
   const classes = useStyles(props);
   return (
-    <Collapse in={props.isVisible} unmountOnExit className={classes.root}>
+    <Collapse
+      in={props.isVisible}
+      unmountOnExit
+      className={`${classes.root} ${classes.inverseColors}`}
+    >
       <Container className={classes.root}>
         <Container className={classes.fullSize}>{props.children}</Container>
         <Container maxWidth={false} className={classes.close}>
