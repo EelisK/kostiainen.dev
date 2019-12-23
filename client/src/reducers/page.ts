@@ -9,5 +9,5 @@ export default handleActions<State["page"], any>(
       return action.payload;
     }
   },
-  PageState.Main
+  PageState.Welcome
 );
