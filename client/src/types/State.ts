@@ -1,5 +1,6 @@
-import { PageState } from ".";
+import { PageState, NotificationState } from ".";
 
 export default interface State {
   page: PageState;
+  notifications: NotificationState;
 }
