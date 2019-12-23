@@ -49,7 +49,7 @@ const TopBar: React.FC<Props> = props => {
     <HideOnScroll>
       <AppBar position="sticky" className={classes.root}>
         <Toolbar>
-          <SvgAnimation src="/assets/default.svg" className={classes.logo} />
+          <img src="/assets/isolated-layout.svg" className={classes.logo} />
           <div className={classes.grow} />
           <div className={classes.section}>
             <IconButton
