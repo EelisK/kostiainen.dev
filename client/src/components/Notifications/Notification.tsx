@@ -4,7 +4,8 @@ import {
   Theme,
   IconButton,
   SnackbarContent,
-  Snackbar
+  Snackbar,
+  Slide
 } from "@material-ui/core";
 import { amber, green } from "@material-ui/core/colors";
 import {
@@ -19,6 +20,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
 import { WithStyles } from "@material-ui/styles/withStyles";
+import { TransitionProps } from "@material-ui/core/transitions/transition";
 
 const NOTIFICATION_LEVEL_ICONS: {
   [level in NotificationLevel]: (props: SvgIconProps) => JSX.Element;
@@ -56,13 +58,16 @@ const styles = (theme: Theme) =>
     }
   });
 
-const AUTOHIDE_DURATION = 6000;
-
 export interface Props extends WithStyles<typeof styles> {
   onClose?: () => void;
   className?: string;
+  autoHide?: number;
   notification: NotificationType;
 }
+
+const TransitionRight = (props: TransitionProps) => (
+  <Slide {...props} direction="right" />
+);
 
 class Notification extends React.PureComponent<Props> {
   public state = { open: true };
@@ -82,7 +87,7 @@ class Notification extends React.PureComponent<Props> {
   private setOpen = (open: boolean) => this.setState({ open });
 
   render() {
-    const { notification, className, classes } = this.props;
+    const { notification, className, classes, autoHide } = this.props;
     const Icon = NOTIFICATION_LEVEL_ICONS[notification.level];
     return (
       <Snackbar
@@ -91,9 +96,10 @@ class Notification extends React.PureComponent<Props> {
           horizontal: "left"
         }}
         open={this.state.open}
-        autoHideDuration={AUTOHIDE_DURATION}
+        autoHideDuration={autoHide}
         onClose={this.handleClose}
         className={className}
+        TransitionComponent={TransitionRight}
       >
         <SnackbarContent
           className={classes[notification.level]}

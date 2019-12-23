@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
+const AUTOHIDE_DURATION = 6000;
+
 export const NotificationsContainer: React.FC<Props> = props => {
   const classes = useStyles(props);
   return (
@@ -38,6 +40,7 @@ export const NotificationsContainer: React.FC<Props> = props => {
             className={classes.child}
             key={notification.time.toISOString()}
             notification={notification}
+            autoHide={AUTOHIDE_DURATION}
           />
         ))}
     </div>
