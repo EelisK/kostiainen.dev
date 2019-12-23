@@ -1,38 +1,63 @@
 import * as React from "react";
-import {
-  Theme,
-  AppBar,
-  Container,
-  Typography,
-  Toolbar
-} from "@material-ui/core";
+import { Theme, AppBar, Toolbar, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import { SvgAnimation } from "../Animation";
 import HideOnScroll from "./HideOnScroll";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import MessageIcon from "@material-ui/icons/Message";
+import { SvgAnimation } from "../Animation";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    backgroundColor: theme.palette.text.primary,
+    background: theme.palette.text.primary,
     color: theme.palette.primary.main,
     flexGrow: 1,
-    flexFlow: "row nowrap",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    height: "100px"
+    maxHeight: "100%"
   },
   logo: {
-    maxWidth: "100%",
-    maxHeight: "100%"
+    height: "100%",
+    maxHeight: theme.spacing(4)
+  },
+  grow: {
+    flexGrow: 1
+  },
+  section: {
+    display: "flex"
   }
 }));
 
+const LINKEDIN_PROFILE = "https://www.linkedin.com/in/eelis-kostiainen/";
+const GITHUB_PROFILE = "http://github.com/EelisK";
+
 const TopBar: React.FC<{}> = props => {
   const classes = useStyles(props);
+
+  const openUrlOnClick = (url: string) => () => window.open(url, "_blank");
+  const openContactForm = () => console.warn("Not implemented");
+
   return (
     <HideOnScroll>
       <AppBar position="sticky" className={classes.root}>
         <Toolbar>
-          <Typography variant="h5">kostiainen.dev</Typography>
+          <SvgAnimation src="/assets/default.svg" className={classes.logo} />
+          <div className={classes.grow} />
+          <div className={classes.section}>
+            <IconButton
+              color="primary"
+              onClick={openUrlOnClick(LINKEDIN_PROFILE)}
+            >
+              <LinkedInIcon />
+            </IconButton>
+            <IconButton
+              color="primary"
+              onClick={openUrlOnClick(GITHUB_PROFILE)}
+            >
+              <GitHubIcon />
+            </IconButton>
+            <IconButton color="primary" onClick={openContactForm}>
+              <MessageIcon />
+            </IconButton>
+          </div>
         </Toolbar>
       </AppBar>
     </HideOnScroll>

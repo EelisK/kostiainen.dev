@@ -1,6 +1,6 @@
 import * as React from "react";
 import TopBar from "./TopBar";
-import { Collapse, Theme, Typography } from "@material-ui/core";
+import { Collapse, Theme } from "@material-ui/core";
 import { connect } from "react-redux";
 import State from "../../types/State";
 import { PageState } from "../../types";
@@ -22,7 +22,6 @@ export const MainPage: React.FC<Props> = props => {
   return (
     <Collapse in={props.isVisible} unmountOnExit className={classes.root}>
       <TopBar />
-      <Typography variant="h1">TODO</Typography>
     </Collapse>
   );
 };
