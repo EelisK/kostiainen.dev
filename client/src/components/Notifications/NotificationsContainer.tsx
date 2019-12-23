@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     zIndex: 1400,
     position: "fixed",
     alignItems: "center",
-    flexDirection: "column-reverse",
+    flexDirection: "column",
     bottom: 0
   },
   child: {
@@ -31,6 +31,7 @@ export const NotificationsContainer: React.FC<Props> = props => {
   return (
     <div className={classes.root}>
       {props.notifications
+        .sort((a, b) => b.time.valueOf() - a.time.valueOf())
         .slice(0, props.notificationLimit)
         .map((notification, i) => (
           <Notification
