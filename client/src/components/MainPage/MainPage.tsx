@@ -1,5 +1,6 @@
 import * as React from "react";
 import TopBar from "./TopBar";
+import Notifications from "../Notifications";
 import { Collapse, Theme } from "@material-ui/core";
 import { connect } from "react-redux";
 import State from "../../types/State";
@@ -22,6 +23,7 @@ export const MainPage: React.FC<Props> = props => {
   return (
     <Collapse in={props.isVisible} unmountOnExit className={classes.root}>
       <TopBar />
+      <Notifications />
     </Collapse>
   );
 };
