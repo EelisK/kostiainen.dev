@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import State from "../../types/State";
 import { PageState } from "../../types";
 import { setPage } from "../../actions/page";
+import { BounceAnimation } from "../Animation";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -48,9 +49,11 @@ export const WelcomePageContainer: React.FC<Props> = props => {
       <Container className={classes.root}>
         <Container className={classes.fullSize}>{props.children}</Container>
         <Container maxWidth={false} className={classes.close}>
-          <IconButton onClick={props.close} color="primary">
-            <ExpandLessIcon />
-          </IconButton>
+          <BounceAnimation delay={10} infinite={true}>
+            <IconButton onClick={props.close} color="primary">
+              <ExpandLessIcon />
+            </IconButton>
+          </BounceAnimation>
         </Container>
       </Container>
     </Collapse>
