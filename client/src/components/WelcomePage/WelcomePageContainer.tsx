@@ -1,7 +1,9 @@
 import * as React from "react";
+import clsx from "clsx";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import { Collapse, Theme, Container, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import { Swipeable } from "react-swipeable";
 import { connect } from "react-redux";
 import State from "../../types/State";
 import { PageState } from "../../types";
@@ -16,6 +18,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column"
+  },
+  swipeAble: {
+    position: "absolute",
+    top: 0,
+    left: 0
   },
   inverseColors: {
     background: theme.palette.text.primary,
@@ -40,12 +47,17 @@ export interface Props {
 
 export const WelcomePageContainer: React.FC<Props> = props => {
   const classes = useStyles(props);
+  const onSwipedUp = () => props.isVisible && props.close();
   return (
     <Collapse
       in={props.isVisible}
       unmountOnExit
-      className={`${classes.root} ${classes.inverseColors}`}
+      className={clsx(classes.inverseColors, classes.root)}
     >
+      <Swipeable
+        onSwipedUp={onSwipedUp}
+        className={clsx(classes.swipeAble, classes.fullSize)}
+      />
       <Container className={classes.root}>
         <Container className={classes.fullSize}>{props.children}</Container>
         <Container maxWidth={false} className={classes.close}>
