@@ -1,6 +1,8 @@
 export interface Project {}
 
-export interface Contact {}
+export interface ContactState {
+  emalFormOpen: boolean;
+}
 
 export enum PageState {
   Welcome = "welcome",
