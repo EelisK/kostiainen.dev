@@ -1,7 +1,7 @@
 import error from "../../src/middlewares/error";
 import HttpError from "../../src/errors/HttpError";
 
-fdescribe("middlewares/error", () => {
+describe("middlewares/error", () => {
   let ctx: any;
   beforeEach(() => {
     ctx = {

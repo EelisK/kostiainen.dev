@@ -22,4 +22,6 @@ steps:
       ]
     env:
       - "PORT=8080"
+      - "TELEGRAM_TOKEN=${_TELEGRAM_TOKEN}"
+      - "TELEGRAM_CHAT_ID=${_TELEGRAM_CHAT_ID}"
 images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
