@@ -4,10 +4,6 @@ import { makeStyles } from "@material-ui/styles";
 import HideOnScroll from "./HideOnScroll";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
-import MessageIcon from "@material-ui/icons/Message";
-import { SvgAnimation } from "../Animation";
-import { connect } from "react-redux";
-import { addNotification } from "../../actions/notifications";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -31,19 +27,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 const LINKEDIN_PROFILE = "https://www.linkedin.com/in/eelis-kostiainen/";
 const GITHUB_PROFILE = "http://github.com/EelisK";
 
-export interface Props {
-  addNotification: typeof addNotification;
-}
+interface Props {}
 
 const TopBar: React.FC<Props> = props => {
   const classes = useStyles(props);
 
   const openUrlOnClick = (url: string) => () => window.open(url, "_blank");
-  const openContactForm = () =>
-    props.addNotification({
-      level: "info",
-      message: "This feature is not implemented"
-    });
 
   return (
     <HideOnScroll>
@@ -64,9 +53,6 @@ const TopBar: React.FC<Props> = props => {
             >
               <GitHubIcon />
             </IconButton>
-            <IconButton color="primary" onClick={openContactForm}>
-              <MessageIcon />
-            </IconButton>
           </div>
         </Toolbar>
       </AppBar>
@@ -74,4 +60,4 @@ const TopBar: React.FC<Props> = props => {
   );
 };
 
-export default connect(null, { addNotification })(TopBar);
+export default TopBar;

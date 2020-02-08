@@ -27,7 +27,7 @@ const styles = (theme: Theme) =>
       height: 700,
       width: 350,
       zIndex: 1500,
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("xs")]: {
         top: 0,
         left: 0,
         height: "100%",
@@ -36,7 +36,7 @@ const styles = (theme: Theme) =>
     },
     closeIcon: {
       display: "none",
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("xs")]: {
         display: "block",
         position: "absolute",
         right: theme.spacing(2),
@@ -50,7 +50,7 @@ const styles = (theme: Theme) =>
       boxShadow: theme.shadows[24],
       height: "100%",
       width: "100%",
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingTop: theme.spacing(8)
       }
     },

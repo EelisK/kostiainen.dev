@@ -36,7 +36,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "center",
     position: "absolute",
-    bottom: 0
+    bottom: 0,
+    "& svg": {
+      transform: "scale(1.5)"
+    }
   }
 }));
 
