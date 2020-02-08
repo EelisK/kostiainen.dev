@@ -6,9 +6,6 @@ import logger from "../logger";
 const BOT = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false });
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-delete process.env.TELEGRAM_TOKEN;
-delete process.env.TELEGRAM_CHAT_ID;
-
 export type MessageParser = (ctx: Context) => string;
 
 const DEFAULT_PARSER: MessageParser = ctx => JSON.stringify(ctx.request.body);
