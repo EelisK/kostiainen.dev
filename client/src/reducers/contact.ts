@@ -1,15 +1,23 @@
 import State from "../types/State";
 import { handleActions } from "redux-actions";
-import { toggleEmailForm } from "../actions/contact";
+import {
+  toggleMessageForm,
+  toggleMessageFormDisabled
+} from "../actions/contact";
 
 export default handleActions<State["contact"], any>(
   {
-    [toggleEmailForm.toString()]: (
+    [toggleMessageForm.toString()]: (
       state,
-      _: ReturnType<typeof toggleEmailForm>
-    ) => ({ ...state, emalFormOpen: !state.emalFormOpen })
+      _: ReturnType<typeof toggleMessageForm>
+    ) => ({ ...state, emalFormOpen: !state.emalFormOpen }),
+    [toggleMessageFormDisabled.toString()]: (
+      state,
+      { payload }: ReturnType<typeof toggleMessageFormDisabled>
+    ) => ({ ...state, formDisabled: payload })
   },
   {
-    emalFormOpen: false
+    emalFormOpen: false,
+    formDisabled: false
   }
 );

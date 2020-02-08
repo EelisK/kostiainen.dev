@@ -1,26 +1,26 @@
 import { Middleware } from "redux";
 import {
-  sendEmailStart,
-  sendEmailSuccess,
-  sendEmailFail
+  sendMessgeStart,
+  sendMessageSuccess,
+  sendMessageFail
 } from "../../actions/contact";
-import { handleSendEmail } from "./email";
+import { handleSendMessge } from "./telegram";
 import State from "../../types/State";
 import { addNotification } from "../../actions/notifications";
 
-export const emailMiddleWare: Middleware<State, any, any> = ({
+export const messagingMiddleWare: Middleware<State, any, any> = ({
   dispatch
 }) => next => action => {
   const res = next(action);
   switch (action.type) {
-    case sendEmailStart.toString():
-      handleSendEmail(action, dispatch);
+    case sendMessgeStart.toString():
+      handleSendMessge(action, dispatch);
       break;
-    case sendEmailSuccess.toString():
+    case sendMessageSuccess.toString():
       dispatch(addNotification({ level: "success", message: "Message sent!" }));
       break;
-    case sendEmailFail.toString():
-      const { payload } = action as ReturnType<typeof sendEmailFail>;
+    case sendMessageFail.toString():
+      const { payload } = action as ReturnType<typeof sendMessageFail>;
       dispatch(addNotification({ level: "error", message: payload.message }));
       break;
   }

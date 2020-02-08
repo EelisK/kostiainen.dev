@@ -1,10 +1,10 @@
 import * as React from "react";
 import clsx from "clsx";
 import { connect } from "react-redux";
-import ContactIcon from "@material-ui/icons/AlternateEmail";
+import ContactIcon from "@material-ui/icons/ChatBubble";
 import CloseIcon from "@material-ui/icons/Close";
 import { makeStyles, Theme, IconButton } from "@material-ui/core";
-import { toggleEmailForm } from "../../actions/contact";
+import { toggleMessageForm } from "../../actions/contact";
 import State from "../../types/State";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -63,6 +63,6 @@ export const ContactButton: React.FC<Props> = props => {
 export default connect(
   (state: State) => ({ formIsOpen: state.contact.emalFormOpen }),
   {
-    toggleContactForm: toggleEmailForm
+    toggleContactForm: toggleMessageForm
   }
 )(ContactButton);

@@ -3,6 +3,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme, CssBaseline } from "@material-ui/core";
 import WelcomePage from "./WelcomePage";
 import MainPage from "./MainPage";
+import Contact from "./Contact";
 
 const theme = createMuiTheme({
   typography: {
@@ -27,5 +28,6 @@ export default () => (
     <CssBaseline />
     <WelcomePage />
     <MainPage />
+    <Contact />
   </ThemeProvider>
 );

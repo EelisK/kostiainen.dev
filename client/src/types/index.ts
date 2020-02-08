@@ -2,6 +2,7 @@ export interface Project {}
 
 export interface ContactState {
   emalFormOpen: boolean;
+  formDisabled: boolean;
 }
 
 export enum PageState {
@@ -18,3 +19,10 @@ export interface Notification {
 }
 
 export type NotificationState = Notification[];
+
+export interface ContactInformation {
+  name: string;
+  email: string;
+  subject: string;
+  text: string;
+}
