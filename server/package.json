@@ -8,7 +8,7 @@
   "scripts": {
     "start": "yarn start:prod",
     "start:dev": "nodemon index.ts",
-    "start:prod": "ts-node index.ts",
+    "start:prod": "NODE_ENV=production ts-node index.ts",
     "test": "yarn jest"
   },
   "dependencies": {

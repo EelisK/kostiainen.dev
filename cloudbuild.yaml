@@ -1,4 +1,15 @@
 steps:
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      [
+        "kms",
+        "decrypt",
+        "--ciphertext-file=server/.env.prod.enc",
+        "--plaintext-file=server/.env.prod",
+        "--location=global",
+        "--keyring=prodkeyring",
+        "--key=prodkey",
+      ]
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "server", "."]
   - name: "gcr.io/cloud-builders/docker"
@@ -22,6 +33,4 @@ steps:
       ]
     env:
       - "PORT=8080"
-      - "TELEGRAM_TOKEN=${_TELEGRAM_TOKEN}"
-      - "TELEGRAM_CHAT_ID=${_TELEGRAM_CHAT_ID}"
 images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"]
