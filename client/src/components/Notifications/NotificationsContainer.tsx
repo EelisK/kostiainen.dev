@@ -14,9 +14,8 @@ export interface Props {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: "flex",
-    zIndex: 1400,
+    zIndex: 1600,
     position: "fixed",
-    alignItems: "center",
     flexDirection: "column",
     bottom: 0
   },

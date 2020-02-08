@@ -78,7 +78,8 @@ const styles = (theme: Theme) =>
       color: theme.palette.background.default,
       borderRadius: "50px",
       marginRight: theme.spacing(),
-      marginLeft: theme.spacing()
+      marginLeft: theme.spacing(),
+      float: "right"
     },
     buttonLabeComponent: {
       marginLeft: theme.spacing(),
