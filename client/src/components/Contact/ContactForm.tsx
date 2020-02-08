@@ -9,11 +9,12 @@ import {
   TextField
 } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
+import CloseIcon from "@material-ui/icons/Close";
 import { connect } from "react-redux";
 import { withStyles, createStyles, WithStyles } from "@material-ui/styles";
 import ContactFormCard from "./ContactFormCard";
 import { ContactInformation } from "../../types";
-import { sendMessgeStart } from "../../actions/contact";
+import { sendMessgeStart, toggleMessageForm } from "../../actions/contact";
 import { TextFieldProps } from "@material-ui/core/TextField";
 
 const styles = (theme: Theme) =>
@@ -25,7 +26,22 @@ const styles = (theme: Theme) =>
       bottom: theme.spacing(12),
       height: 700,
       width: 350,
-      zIndex: 1500
+      zIndex: 1500,
+      [theme.breakpoints.down("sm")]: {
+        top: 0,
+        left: 0,
+        height: "100%",
+        width: "100%"
+      }
+    },
+    closeIcon: {
+      display: "none",
+      [theme.breakpoints.down("sm")]: {
+        display: "block",
+        position: "absolute",
+        right: theme.spacing(2),
+        top: theme.spacing(2)
+      }
     },
     container: {
       overflowY: "scroll",
@@ -33,7 +49,10 @@ const styles = (theme: Theme) =>
       paddingTop: theme.spacing(4),
       boxShadow: theme.shadows[24],
       height: "100%",
-      width: "100%"
+      width: "100%",
+      [theme.breakpoints.down("sm")]: {
+        paddingTop: theme.spacing(8)
+      }
     },
     header: {
       background: theme.palette.text.primary,
@@ -79,6 +98,7 @@ export interface Props extends WithStyles<typeof styles> {
   visible: boolean;
   disabled: boolean;
   sendContactInformation(info: ContactInformation): void;
+  onClose(): void;
 }
 
 const FIELD_LABELS: { [field in keyof ContactInformation]: string } = {
@@ -114,6 +134,13 @@ export class ContactFormPlain extends React.PureComponent<Props, State> {
         <Card className={this.props.classes.root}>
           <div className={this.props.classes.container}>
             <div className={this.props.classes.header} />
+            <IconButton
+              color="primary"
+              onClick={this.props.onClose}
+              className={this.props.classes.closeIcon}
+            >
+              <CloseIcon />
+            </IconButton>
             <form
               autoComplete="on"
               action="POST"
@@ -156,6 +183,7 @@ export class ContactFormPlain extends React.PureComponent<Props, State> {
   ) => (
     <ContactFormCard>
       <TextField
+        className={this.props.classes.input}
         onChange={this.onFieldChange(field)}
         disabled={this.props.disabled}
         label={FIELD_LABELS[field]}
@@ -176,6 +204,7 @@ export default connect(
     disabled: state.contact.formDisabled
   }),
   {
-    sendContactInformation: sendMessgeStart
+    sendContactInformation: sendMessgeStart,
+    onClose: toggleMessageForm
   }
 )(ContactForm);
