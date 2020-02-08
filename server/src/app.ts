@@ -4,10 +4,11 @@ import * as bodyParser from "koa-bodyparser";
 import * as serve from "koa-static";
 
 import setup from "./setup";
-import error from "./middlewares/error";
-import contactRoutes from "./routes/contact";
 
 setup();
+
+import error from "./middlewares/error";
+import contactRoutes from "./routes/contact";
 
 const app = new koa();
 app.use(bodyParser());

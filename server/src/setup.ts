@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
 import * as path from "path";
+import logger from "./logger";
 
 export default (): any => {
   dotenv.config();
@@ -9,7 +10,9 @@ export default (): any => {
     case "test":
       return dotenv.config({ path: path.join(__dirname, "../.env.test") });
     case "production":
-    default:
       return dotenv.config({ path: path.join(__dirname, "../.env.prod") });
+    default:
+      logger.warn(`No environment config for ${process.env.NODE_ENV}`);
+      return;
   }
 };
