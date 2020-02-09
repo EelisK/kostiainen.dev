@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import State from "../../types/State";
 import { PageState } from "../../types";
 import { makeStyles } from "@material-ui/styles";
+import PlaceHolder from "./PlaceHolder";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -24,6 +25,7 @@ export const MainPage: React.FC<Props> = props => {
     <Collapse in={props.isVisible} unmountOnExit className={classes.root}>
       <TopBar />
       <Notifications />
+      <PlaceHolder />
     </Collapse>
   );
 };
