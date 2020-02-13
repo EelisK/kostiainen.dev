@@ -7,14 +7,9 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    background: theme.palette.text.primary,
-    color: theme.palette.primary.main,
+    background: theme.palette.background.default,
     flexGrow: 1,
     maxHeight: "100%"
-  },
-  logo: {
-    height: "100%",
-    maxHeight: theme.spacing(4)
   },
   grow: {
     flexGrow: 1
@@ -38,17 +33,16 @@ const TopBar: React.FC<Props> = props => {
     <HideOnScroll>
       <AppBar position="sticky" className={classes.root}>
         <Toolbar>
-          <img src="/assets/isolated-layout.svg" className={classes.logo} />
           <div className={classes.grow} />
           <div className={classes.section}>
             <IconButton
-              color="primary"
+              color="secondary"
               onClick={openUrlOnClick(LINKEDIN_PROFILE)}
             >
               <LinkedInIcon />
             </IconButton>
             <IconButton
-              color="primary"
+              color="secondary"
               onClick={openUrlOnClick(GITHUB_PROFILE)}
             >
               <GitHubIcon />

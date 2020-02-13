@@ -16,6 +16,7 @@ import ContactFormCard from "./ContactFormCard";
 import { ContactInformation } from "../../types";
 import { sendMessgeStart, toggleMessageForm } from "../../actions/contact";
 import { TextFieldProps } from "@material-ui/core/TextField";
+import {linearGradient} from "../../util/styles";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -36,6 +37,7 @@ const styles = (theme: Theme) =>
     },
     closeIcon: {
       display: "none",
+      color: theme.palette.text.secondary,
       [theme.breakpoints.down("xs")]: {
         display: "block",
         position: "absolute",
@@ -55,8 +57,7 @@ const styles = (theme: Theme) =>
       }
     },
     header: {
-      background: theme.palette.text.primary,
-      color: theme.palette.background.default,
+      background: linearGradient( theme.palette.primary, "right"),
       display: "flex",
       alignContent: "center",
       padding: theme.spacing(4),
@@ -74,14 +75,18 @@ const styles = (theme: Theme) =>
       width: "100%"
     },
     sendButton: {
-      background: theme.palette.text.primary,
-      color: theme.palette.background.default,
+      background: theme.palette.secondary.main,
+      color: theme.palette.text.primary,
       borderRadius: "50px",
       marginRight: theme.spacing(),
       marginLeft: theme.spacing(),
-      float: "right"
+      float: "right",
+      "&:hover": {
+        background: theme.palette.secondary.light
+      }
     },
-    buttonLabeComponent: {
+    buttonLabelComponent: {
+      color: theme.palette.text.secondary,
       marginLeft: theme.spacing(),
       "&:last-child": {
         marginRight: theme.spacing()
@@ -136,7 +141,6 @@ export class ContactFormPlain extends React.PureComponent<Props, State> {
           <div className={this.props.classes.container}>
             <div className={this.props.classes.header} />
             <IconButton
-              color="primary"
               onClick={this.props.onClose}
               className={this.props.classes.closeIcon}
             >
@@ -144,7 +148,6 @@ export class ContactFormPlain extends React.PureComponent<Props, State> {
             </IconButton>
             <form
               autoComplete="on"
-              action="POST"
               onSubmit={this.onSubmit}
               className={this.props.classes.form}
             >
@@ -167,9 +170,9 @@ export class ContactFormPlain extends React.PureComponent<Props, State> {
         type="submit"
         disabled={this.props.disabled}
       >
-        <SendIcon className={this.props.classes.buttonLabeComponent} />
+        <SendIcon className={this.props.classes.buttonLabelComponent} />
         <Typography
-          className={this.props.classes.buttonLabeComponent}
+          className={this.props.classes.buttonLabelComponent}
           variant="button"
         >
           Contact me
@@ -189,7 +192,7 @@ export class ContactFormPlain extends React.PureComponent<Props, State> {
         disabled={this.props.disabled}
         label={FIELD_LABELS[field]}
         value={this.state[field]}
-        color="secondary"
+        color="primary"
         required
         {...override}
       />

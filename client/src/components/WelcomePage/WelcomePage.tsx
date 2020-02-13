@@ -2,36 +2,26 @@ import * as React from "react";
 import { Typography } from "@material-ui/core";
 import { TextAnimation } from "../Animation";
 import WelcomePageContainer from "./WelcomePageContainer";
-import { TextAnimationDescription } from "../Animation/Text";
+import {
+  TextAnimationDescription,
+  generateTextSequence
+} from "../Animation/Text";
 
-const LINE_BREAK = { children: <br /> };
 const ANIMATIONS: TextAnimationDescription[] = [
-  {
-    children: (
-      <Typography variant="h2" display="inline">
-        Hello,
+  generateTextSequence({
+    values: [
+      "I'm Eelis Kostiainen",
+      "I'm a software developer",
+      "I'm a SECCLO student",
+      "Welcome to my homepage"
+    ],
+    delay: 2000,
+    render: text => (
+      <Typography variant="h5" display="inline">
+        {text}
       </Typography>
     )
-  },
-  LINE_BREAK,
-  LINE_BREAK,
-  {
-    children: (
-      <Typography variant="h4" display="inline">
-        I'm Eelis Kostiainen
-      </Typography>
-    ),
-    delay: { ms: 1000 }
-  },
-  LINE_BREAK,
-  {
-    children: (
-      <Typography variant="h4" display="inline">
-        Welcome to my homepage
-      </Typography>
-    ),
-    delay: { ms: 1000 }
-  }
+  })
 ];
 
 const WelcomePage: React.FunctionComponent<{}> = () => {

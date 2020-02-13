@@ -39,4 +39,24 @@ const Text: React.FunctionComponent<Props> = props => (
   </Typist>
 );
 
+export interface TextSequenceGenerator {
+  values: string[];
+  delay: number;
+  render?: (value: string) => React.ReactNode;
+}
+
+export const generateTextSequence = (
+  { values, delay, render = x => x }: TextSequenceGenerator,
+  index = 0
+): TextAnimationDescription => ({
+  children: render(values[index]),
+  backspace: index < values.length - 1 && {
+    props: {
+      delay: delay,
+      count: values[index].length
+    },
+    animations: [generateTextSequence({ values, delay, render }, index + 1)]
+  }
+});
+
 export default Text;

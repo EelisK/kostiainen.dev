@@ -6,6 +6,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import { makeStyles, Theme, IconButton } from "@material-ui/core";
 import { toggleMessageForm } from "../../actions/contact";
 import State from "../../types/State";
+import {linearGradient} from "../../util/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -14,7 +15,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: theme.spacing(2),
     width: theme.spacing(8),
     height: theme.spacing(8),
-    background: theme.palette.text.primary,
+    background:  linearGradient( theme.palette.primary, "bottom"),
+    color: theme.palette.background.default,
     boxShadow: theme.shadows[9],
     cursor: "pointer",
     overflow: "hidden"
@@ -43,14 +45,12 @@ export const ContactButton: React.FC<Props> = props => {
   return (
     <IconButton className={classes.root} onClick={props.toggleContactForm}>
       <CloseIcon
-        color="primary"
         className={clsx(
           classes.iconCommon,
           props.formIsOpen ? classes.activeIcon : classes.inactiveIcon
         )}
       />
       <ContactIcon
-        color="primary"
         className={clsx(
           classes.iconCommon,
           props.formIsOpen ? classes.inactiveIcon : classes.activeIcon

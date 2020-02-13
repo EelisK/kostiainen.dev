@@ -16,17 +16,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     display: "flex",
     justifyContent: "center",
+    textAlign: "center",
     alignItems: "center",
-    flexDirection: "column"
+    flexDirection: "column",
+    background: theme.palette.background.default,
+    color: theme.palette.secondary.main
   },
   swipeAble: {
     position: "absolute",
     top: 0,
     left: 0
-  },
-  inverseColors: {
-    background: theme.palette.text.primary,
-    color: theme.palette.primary.main
   },
   fullSize: {
     height: "100%",
@@ -52,11 +51,7 @@ export const WelcomePageContainer: React.FC<Props> = props => {
   const classes = useStyles(props);
   const onSwipedUp = () => props.isVisible && props.close();
   return (
-    <Collapse
-      in={props.isVisible}
-      unmountOnExit
-      className={clsx(classes.inverseColors, classes.root)}
-    >
+    <Collapse in={props.isVisible} unmountOnExit className={classes.root}>
       <Swipeable
         onSwipedUp={onSwipedUp}
         className={clsx(classes.swipeAble, classes.fullSize)}
@@ -64,8 +59,8 @@ export const WelcomePageContainer: React.FC<Props> = props => {
       <Container className={classes.root}>
         <Container className={classes.fullSize}>{props.children}</Container>
         <Container maxWidth={false} className={classes.close}>
-          <BounceAnimation delay={10} infinite={true}>
-            <IconButton onClick={props.close} color="primary">
+          <BounceAnimation delay={18} infinite={true}>
+            <IconButton onClick={props.close} color="secondary">
               <ExpandLessIcon />
             </IconButton>
           </BounceAnimation>

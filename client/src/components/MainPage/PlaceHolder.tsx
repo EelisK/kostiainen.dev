@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "0 auto",
     width: "50%",
     maxWidth: 500,
-    color: "#4c32e5",
+    color: theme.palette.primary.main,
     textAlign: "center"
   }
 }));
