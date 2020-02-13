@@ -10,16 +10,23 @@ const theme = createMuiTheme({
     fontFamily: '"Overpass Mono Regular", monospace'
   },
   palette: {
-    background: {
-      default: "#FFFFFF"
-    },
+    type: "light",
     primary: {
-      main: "#FFFFFF",
-      contrastText: "linear-gradient(45deg, #400df8, #4c32e5)"
+      // linear-gradient(to bottom, #f15b74, #ff6021)
+      main: "#ff6021",
+      dark: "#f15b74",
+      light: "#fc8569"
+    },
+    secondary: {
+      main: "#1e66f1",
+      dark: "#0f56e0",
+      light: "#296ef0"
     },
     text: {
-      primary: "linear-gradient(45deg, #400df8, #4c32e5)"
-    }
+      primary: "#092545",
+      secondary: "#c8d6df"
+    },
+    divider: "#BDBDBD"
   }
 });
 
