@@ -12,7 +12,6 @@ const theme = createMuiTheme({
   palette: {
     type: "light",
     primary: {
-      // linear-gradient(to bottom, #f15b74, #ff6021)
       main: "#ff6021",
       dark: "#f15b74",
       light: "#fc8569"
@@ -24,7 +23,7 @@ const theme = createMuiTheme({
     },
     text: {
       primary: "#092545",
-      secondary: "#c8d6df"
+      secondary: "#c9d7e0"
     },
     divider: "#BDBDBD"
   }

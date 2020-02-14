@@ -1,5 +1,5 @@
 import * as React from "react";
-import TopBar from "./TopBar";
+import TopBar from "../TopBar";
 import Notifications from "../Notifications";
 import { Collapse, Theme } from "@material-ui/core";
 import { connect } from "react-redux";

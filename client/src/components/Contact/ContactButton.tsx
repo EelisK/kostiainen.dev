@@ -6,7 +6,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import { makeStyles, Theme, IconButton } from "@material-ui/core";
 import { toggleMessageForm } from "../../actions/contact";
 import State from "../../types/State";
-import {linearGradient} from "../../util/styles";
+import { linearGradient } from "../../util/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: theme.spacing(2),
     width: theme.spacing(8),
     height: theme.spacing(8),
-    background:  linearGradient( theme.palette.primary, "bottom"),
+    background: linearGradient(theme.palette.primary, "bottom"),
     color: theme.palette.background.default,
     boxShadow: theme.shadows[9],
     cursor: "pointer",
