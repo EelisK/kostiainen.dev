@@ -11,7 +11,6 @@ const config = {
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-        exclude: /node_modules/,
         use: [
           {
             loader: "file-loader",

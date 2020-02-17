@@ -16,13 +16,13 @@ import ContactFormCard from "./ContactFormCard";
 import { ContactInformation } from "../../types";
 import { sendMessgeStart, toggleMessageForm } from "../../actions/contact";
 import { TextFieldProps } from "@material-ui/core/TextField";
-import {linearGradient} from "../../util/styles";
+import { linearGradient } from "../../util/styles";
 
 const styles = (theme: Theme) =>
   createStyles({
     root: {
       boxShadow: theme.shadows[3],
-      position: "absolute",
+      position: "fixed",
       right: theme.spacing(2),
       bottom: theme.spacing(12),
       height: 700,
@@ -57,7 +57,7 @@ const styles = (theme: Theme) =>
       }
     },
     header: {
-      background: linearGradient( theme.palette.primary, "right"),
+      background: linearGradient(theme.palette.primary, "right"),
       display: "flex",
       alignContent: "center",
       padding: theme.spacing(4),
