@@ -10,12 +10,12 @@ import { linearGradient } from "../../util/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    position: "absolute",
+    position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
     width: theme.spacing(8),
     height: theme.spacing(8),
-    background: linearGradient(theme.palette.primary, "bottom"),
+    background: linearGradient(theme.palette.primary, "right"),
     color: theme.palette.background.default,
     boxShadow: theme.shadows[9],
     cursor: "pointer",

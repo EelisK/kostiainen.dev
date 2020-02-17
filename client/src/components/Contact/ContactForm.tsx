@@ -22,7 +22,7 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {
       boxShadow: theme.shadows[3],
-      position: "absolute",
+      position: "fixed",
       right: theme.spacing(2),
       bottom: theme.spacing(12),
       height: 700,
