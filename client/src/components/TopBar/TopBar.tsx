@@ -1,15 +1,7 @@
 import * as React from "react";
-import {
-  Theme,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography
-} from "@material-ui/core";
+import { Theme, AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import HideOnScroll from "../HideOnScroll";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -26,7 +18,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   title: {
     color: theme.palette.text.primary,
     lineHeight: `${theme.spacing(4)}px`,
-    transition: theme.transitions.easing.sharp,
     cursor: "pointer",
     outline: "none",
     "&:after": {
@@ -56,33 +47,44 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }));
 
-const LINKEDIN_PROFILE = "https://www.linkedin.com/in/eelis-kostiainen/";
-const GITHUB_PROFILE = "http://github.com/EelisK";
+const MENU_ITEMS = [
+  {
+    name: "About",
+    id: "about"
+  },
+  {
+    name: "Skills",
+    id: "skills"
+  },
+  {
+    name: "Social",
+    id: "social"
+  }
+];
+
+const getScrollToHandler = (elementId: string) => () =>
+  document.getElementById(elementId)?.scrollIntoView({ behavior: "smooth" });
 
 const TopBar: React.FC<{}> = props => {
   const classes = useStyles(props);
-
-  const openUrlOnClick = (url: string) => () => window.open(url, "_blank");
-
   return (
     <HideOnScroll>
       <AppBar position="sticky" className={classes.root}>
         <Toolbar>
-          <div className={classes.grow} />
           <div className={classes.section}>
-            <IconButton
-              color="secondary"
-              onClick={openUrlOnClick(LINKEDIN_PROFILE)}
-            >
-              <LinkedInIcon />
-            </IconButton>
-            <IconButton
-              color="secondary"
-              onClick={openUrlOnClick(GITHUB_PROFILE)}
-            >
-              <GitHubIcon />
-            </IconButton>
+            {MENU_ITEMS.map(({ name, id }) => (
+              <div
+                onClick={getScrollToHandler(id)}
+                className={classes.titleContainer}
+                key={id}
+              >
+                <Typography variant="button" className={classes.title}>
+                  {name}
+                </Typography>
+              </div>
+            ))}
           </div>
+          <div className={classes.grow} />
         </Toolbar>
       </AppBar>
     </HideOnScroll>

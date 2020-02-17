@@ -4,6 +4,7 @@ import { createMuiTheme, CssBaseline } from "@material-ui/core";
 import WelcomePage from "./WelcomePage";
 import MainPage from "./MainPage";
 import Contact from "./Contact";
+import "devicon";
 
 const theme = createMuiTheme({
   typography: {
