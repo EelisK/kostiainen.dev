@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Notification as NotificationType } from "../../types";
 import Notification from "./Notification";
-import State from "State";
+import State from "../../types/State";
 import { Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
