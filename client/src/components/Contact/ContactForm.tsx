@@ -46,7 +46,6 @@ const styles = (theme: Theme) =>
       }
     },
     container: {
-      overflowY: "scroll",
       maxHeight: "100%",
       paddingTop: theme.spacing(4),
       boxShadow: theme.shadows[24],

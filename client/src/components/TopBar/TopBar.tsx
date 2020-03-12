@@ -62,7 +62,9 @@ const MENU_ITEMS = [
 ];
 
 const getScrollToHandler = (elementId: string) => () =>
-  document.getElementById(elementId)?.scrollIntoView({ behavior: "smooth" });
+  document
+    .getElementById(elementId)
+    ?.scrollIntoView({ behavior: "smooth", block: "center" });
 
 const TopBar: React.FC<{}> = props => {
   const classes = useStyles(props);
