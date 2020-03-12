@@ -37,7 +37,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: "absolute",
     bottom: 0,
     "& svg": {
-      transform: "scale(1.5)"
+      transform: "scale(1.5)",
+      color: "#092545"
     }
   }
 }));
@@ -60,7 +61,7 @@ export const WelcomePageContainer: React.FC<Props> = props => {
         <Container className={classes.fullSize}>{props.children}</Container>
         <Container maxWidth={false} className={classes.close}>
           <BounceAnimation delay={18} infinite={true}>
-            <IconButton onClick={props.close} color="secondary">
+            <IconButton onClick={props.close}>
               <ExpandLessIcon />
             </IconButton>
           </BounceAnimation>

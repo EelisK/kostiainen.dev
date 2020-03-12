@@ -9,8 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "50%",
-    background: `${theme.palette.secondary.light}dd`
+    minHeight: "50%"
   },
   avatar: {
     boxShadow: theme.shadows[4],

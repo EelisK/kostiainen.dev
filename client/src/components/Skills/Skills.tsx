@@ -6,9 +6,9 @@ import SKILLS_LIST from "./list";
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: "50%",
-    background: `${theme.palette.primary.light}dd`,
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    flexDirection: "column"
   },
   gridContainer: {
     padding: theme.spacing(6),

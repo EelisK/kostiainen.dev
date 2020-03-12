@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
     minHeight: "50%",
-    background: `${theme.palette.text.primary}dd`,
     color: theme.palette.primary.main,
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2)
@@ -60,7 +59,7 @@ const About: React.FC<{}> = props => {
         <ListItemText
           primary={title}
           secondary={
-            <Typography display="block" variant="caption" color="textSecondary">
+            <Typography display="block" variant="caption" color="textPrimary">
               {descriptions.map((value, idx) => (
                 <span key={idx}>
                   {value} <br />
