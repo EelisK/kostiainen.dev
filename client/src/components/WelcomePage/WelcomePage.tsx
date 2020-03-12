@@ -17,7 +17,10 @@ const useStyles = makeStyles<Theme, {}>((theme: Theme) => ({
   typed: {
     fontSize: theme.spacing(8),
     color: theme.palette.text.primary,
-    display: "inline"
+    display: "inline",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: theme.spacing(4)
+    }
   },
   cursor: {
     position: "relative",
@@ -27,7 +30,12 @@ const useStyles = makeStyles<Theme, {}>((theme: Theme) => ({
     fontSize: "0",
     background: "#092545",
     display: "inline-block",
-    marginLeft: theme.spacing(0.5)
+    marginLeft: theme.spacing(0.5),
+    [theme.breakpoints.down("xs")]: {
+      width: theme.spacing(2),
+      height: theme.spacing(0.5),
+      marginLeft: theme.spacing(0.25)
+    }
   }
 }));
 
