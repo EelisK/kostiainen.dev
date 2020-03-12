@@ -12,6 +12,8 @@ export interface TextAnimationDescription {
 
 export interface Props {
   animations: TextAnimationDescription[];
+  className?: string;
+  cursor?: React.ReactNode;
 }
 
 const composePartialAnimation = (
@@ -28,15 +30,21 @@ const composePartialAnimation = (
     : [])
 ];
 
-const renderTypistChildren = (animations: Props["animations"], key: number) =>
+const renderTypistChildren = (
+  animations: Props["animations"],
+  key: number = 0
+) =>
   animations.map((component, idx) =>
     composePartialAnimation(component, idx + key)
   );
 
 const Text: React.FunctionComponent<Props> = props => (
-  <Typist cursor={{ show: false }}>
-    {renderTypistChildren(props.animations, 0)}
-  </Typist>
+  <>
+    <Typist cursor={{ show: false }} className={props.className}>
+      {renderTypistChildren(props.animations)}
+    </Typist>
+    {props.cursor}
+  </>
 );
 
 export interface TextSequenceGenerator {
