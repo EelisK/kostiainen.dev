@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   gridContainer: {
     padding: theme.spacing(6),
     width: "100%",
-    margin: 0
+    margin: 0,
+    maxWidth: "1000px"
   },
   gridItem: {
     padding: "0 !important"
