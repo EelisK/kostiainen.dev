@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Theme, AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import HideOnScroll from "../HideOnScroll";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -68,26 +67,24 @@ const getScrollToHandler = (elementId: string) => () =>
 const TopBar: React.FC<{}> = props => {
   const classes = useStyles(props);
   return (
-    <HideOnScroll>
-      <AppBar position="sticky" className={classes.root}>
-        <Toolbar>
-          <div className={classes.section}>
-            {MENU_ITEMS.map(({ name, id }) => (
-              <div
-                onClick={getScrollToHandler(id)}
-                className={classes.titleContainer}
-                key={id}
-              >
-                <Typography variant="button" className={classes.title}>
-                  {name}
-                </Typography>
-              </div>
-            ))}
-          </div>
-          <div className={classes.grow} />
-        </Toolbar>
-      </AppBar>
-    </HideOnScroll>
+    <AppBar position="sticky" className={classes.root}>
+      <Toolbar>
+        <div className={classes.section}>
+          {MENU_ITEMS.map(({ name, id }) => (
+            <div
+              onClick={getScrollToHandler(id)}
+              className={classes.titleContainer}
+              key={id}
+            >
+              <Typography variant="button" className={classes.title}>
+                {name}
+              </Typography>
+            </div>
+          ))}
+        </div>
+        <div className={classes.grow} />
+      </Toolbar>
+    </AppBar>
   );
 };
 
