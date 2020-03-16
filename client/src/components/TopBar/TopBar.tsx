@@ -1,48 +1,29 @@
 import * as React from "react";
-import { Theme, AppBar, Toolbar, Typography } from "@material-ui/core";
+import {
+  Theme,
+  AppBar,
+  Paper,
+  Tabs,
+  Tab,
+  Avatar,
+  Grid,
+  useScrollTrigger,
+  Collapse
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import ScrollSpy from "../ScrollSpy";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     background: theme.palette.background.default,
-    flexGrow: 1,
     maxHeight: "100%"
   },
-  titleContainer: {
-    position: "relative",
-    textAlign: "center",
-    marginRight: theme.spacing(2),
-    marginLeft: theme.spacing(2)
+  avatar: {
+    width: theme.spacing(10),
+    height: theme.spacing(10)
   },
-  title: {
-    color: theme.palette.text.primary,
-    lineHeight: `${theme.spacing(4)}px`,
-    cursor: "pointer",
-    outline: "none",
-    "&:after": {
-      background: theme.palette.secondary.main,
-      bottom: 0,
-      content: '""',
-      height: "2px",
-      left: "50%",
-      position: "absolute",
-      transition: "width 0.3s ease 0s, left 0.3s ease 0s",
-      width: 0
-    },
-    "&:hover:after": {
-      width: "100%",
-      left: 0
-    },
-    "&:focus:after": {
-      left: "50%",
-      width: 0
-    }
-  },
-  grow: {
-    flexGrow: 1
-  },
-  section: {
-    display: "flex"
+  topSection: {
+    padding: theme.spacing(2)
   }
 }));
 
@@ -68,24 +49,49 @@ const getScrollToHandler = (elementId: string) => () =>
 
 const TopBar: React.FC<{}> = props => {
   const classes = useStyles(props);
+  const [section, setSection] = React.useState(0);
+  const notOnTop = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 50
+  });
+  const onScrollUpdate = (firstVisibleId: string) =>
+    setSection(MENU_ITEMS.findIndex(x => x.id === firstVisibleId));
+
   return (
-    <AppBar position="sticky" className={classes.root}>
-      <Toolbar>
-        <div className={classes.section}>
+    <AppBar position="fixed" className={classes.root} hidden={false}>
+      <ScrollSpy ids={MENU_ITEMS.map(x => x.id)} onUpdate={onScrollUpdate} />
+      <Collapse
+        in={!notOnTop}
+        collapsedHeight={"0px"}
+        timeout={{
+          enter: 300,
+          exit: 200
+        }}
+        unmountOnExit
+      >
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          direction="column"
+          className={classes.topSection}
+        >
+          <Avatar src="/assets/profile.jpg" className={classes.avatar} />
+        </Grid>
+      </Collapse>
+      <Paper className={classes.root}>
+        <Tabs
+          indicatorColor="primary"
+          textColor="primary"
+          value={section}
+          onChange={(_, value) => setSection(value)}
+          centered
+        >
           {MENU_ITEMS.map(({ name, id }) => (
-            <div
-              onClick={getScrollToHandler(id)}
-              className={classes.titleContainer}
-              key={id}
-            >
-              <Typography variant="button" className={classes.title}>
-                {name}
-              </Typography>
-            </div>
+            <Tab label={name} key={id} onClick={getScrollToHandler(id)} />
           ))}
-        </div>
-        <div className={classes.grow} />
-      </Toolbar>
+        </Tabs>
+      </Paper>
     </AppBar>
   );
 };
