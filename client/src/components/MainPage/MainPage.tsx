@@ -17,7 +17,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     // HACK: collapse contains nested components
     // that need their height to be set manually
     "& > div, & > div > div": {
-      height: "100%"
+      height: "100%",
+      "& > div:first-child": {
+        marginTop: theme.spacing(20)
+      }
     }
   }
 }));
